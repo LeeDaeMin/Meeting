@@ -4,13 +4,13 @@ const bcrypt = require('bcrypt-nodejs');
 
 const Usuarios = db.define('usuarios', {
     id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncremente: true
+        type: Sequelize.INTEGER, 
+        primaryKey: true, 
+        autoIncrement: true 
     },
     nombre: Sequelize.STRING(60),
     imagen: Sequelize.STRING(60),
-    email: {
+    email: {    
         type: Sequelize.STRING(30),
         allowNull: false,
         validate: {
