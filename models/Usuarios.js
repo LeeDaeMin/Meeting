@@ -14,7 +14,7 @@ const Usuarios = db.define('usuarios', {
         type: Sequelize.STRING(30),
         allowNull: false,
         validate: {
-            isEmail: { msg: 'Agxrega un Correo Valido'}
+            isEmail: { msg: 'Agrega un Correo Valido'}
         },
         unique: {
             args: true,
@@ -26,7 +26,7 @@ const Usuarios = db.define('usuarios', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: 'El Password NO Puede Ir Vacio'
+                msg: 'El Password No Puede Ir Vacio'
             }
         }
     },

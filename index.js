@@ -1,6 +1,9 @@
     const express = require('express');
     const expressLayouts = require('express-ejs-layouts');
     const path = require('path');
+    const flash = require('connect-flash');
+    const session = require('express-session');
+    const cookieParser = require('cookie-parser');
     const routes = require('./routes');
     
     // Configuracion y Modelos BD
@@ -29,12 +32,27 @@
     // archivos staticos
     app.use(express.static('public'))
 
+    // Habilitar cookie parser
+    app.use(cookieParser());
+
+    //crear la session
+    app.use(session({
+        secret: process.env.SECRETO,
+        key: process.env.KEY,
+        resave: false,
+        saveUninitialized: false
+    }))
+
+    // Agregar Falsh Message
+    app.use(flash());
+
     //Middleware (Usuario Logeado, Flash message, fecha Actual)
     app.use((req, res, next) => {
+        res.locals.mensajes = req.flash();
         const fecha = new Date();
         res.locals.year = fecha.getFullYear();
         next();
-    })  
+    });
 
     // Routing 
     app.use('/', routes());
