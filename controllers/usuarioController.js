@@ -14,7 +14,11 @@ exports.crearNuevoUsuario = async (req, res) =>{
         const nuevoUsuario = await Usuarios.create(usuario);
         console.log('Usuarios Creado', nuevoUsuario)
     } catch(error) {
-        console.log(error)
+
+        const erroresSequilize = error.errors.map(err => err.message);
+
+        req.flash('error', erroresSequilize);
+        res.redirect('/crear-cuenta');
     }
 
 

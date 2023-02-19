@@ -23,6 +23,10 @@
             <a href="/crear-cuenta">Registrarse</a>
         </nav>
     </header>
+    <% if (locals.mensajes) %>
+    <%  const categoria = Object.keys(locals.mensajes) %>
+    <%= categoria %>
+        
 
     <%- body %>  
 
